@@ -1,0 +1,217 @@
+<!DOCTYPE html><html lang="es" prefix="og: http://ogp.me/ns#"><head>
+<title>Ejemplo "Hello World" de Express</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="/images/favicon.png">
+<link rel="stylesheet" href="/css/style.css?_=1659494686">
+<link rel="stylesheet" href="/css/dropit.css">
+<link rel="stylesheet" href="/css/prism.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="/css/es.css">
+<link rel="stylesheet" href="/css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="/js/ismobile.js"></script>
+<script data-cfasync="false" src="/js/app.js"></script>
+<script data-cfasync="false" src="/js/retina.js"></script>
+<script data-cfasync="false" src="/js/dropit.js"></script>
+<script data-cfasync="false" src="/js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css">
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="/" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search">
+<ul id="navmenu">
+<li><a href="/es/" id="home-menu">Inicio</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="/es/starter/installing.html" class="active">Cómo empezar</a>
+<ul>
+<li>
+<a href="/es/starter/installing.html">
+Instalación
+</a>
+</li>
+<li>
+<a href="/es/starter/hello-world.html">
+Hello world
+</a>
+</li>
+<li>
+<a href="/es/starter/generator.html">
+Generador de Express
+</a>
+</li>
+<li>
+<a href="/es/starter/basic-routing.html">
+Direccionamiento básico
+</a>
+</li>
+<li>
+<a href="/es/starter/static-files.html">
+Archivos estáticos
+</a>
+</li>
+<li>
+<a href="/es/starter/faq.html">
+Preguntas más frecuentes
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="/es/guide/routing.html">Guía</a>
+<ul>
+<li><a href="/es/guide/routing.html">Direccionamiento</a>
+</li>
+<li><a href="/es/guide/writing-middleware.html">Escritura de middleware</a>
+</li>
+<li><a href="/es/guide/using-middleware.html">Utilización del middleware</a>
+</li>
+<li><a href="/es/guide/using-template-engines.html">Utilización de motores de plantilla</a>
+</li>
+<li><a href="/es/guide/error-handling.html">Manejo de errores</a>
+</li>
+<li><a href="/es/guide/debugging.html">Depuración</a>
+</li>
+<li><a href="/es/guide/behind-proxies.html">Express detrás de proxies</a>
+</li>
+<li><a href="/es/guide/migrating-4.html">Migración a Express 4</a>
+</li>
+<li><a href="/es/guide/migrating-5.html">Migración a Express 5</a>
+</li>
+<li><a href="/es/guide/database-integration.html">Integración de la base de datos</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="/es/4x/api.html">Referencia de API</a>
+<ul>
+<li><a href="/es/4x/api.html">4.x</a>
+</li>
+<li><a href="/es/3x/api.html">3.x (en desuso)</a>
+</li>
+<li><a href="/2x/">2.x (en desuso)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="/es/advanced/developing-template-engines.html">Temas avanzados</a>
+<ul>
+<li><a href="/es/advanced/developing-template-engines.html">Motores de plantilla</a>
+</li>
+<li><a href="/es/advanced/pm.html">Utilización de gestores de procesos</a>
+</li>
+<li><a href="/es/advanced/security-updates.html">Actualizaciones de seguridad</a>
+</li>
+<li><a href="/es/advanced/best-practice-security.html">Mejores prácticas de seguridad</a>
+</li>
+<li><a href="/es/advanced/best-practice-performance.html">Mejores prácticas de rendimiento</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="/es/resources/glossary.html">Recursos</a>
+<ul>
+<li><a href="/es/resources/glossary.html">Glosario</a>
+</li>
+<li><a href="/es/resources/middleware.html">Middleware</a>
+</li>
+<li><a href="/es/resources/community.html">Comunidad</a>
+</li>
+<li><a href="/es/resources/learning.html">Aprendizaje adicional</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p></p><p>Esta traducción proporcionada por <a href="http://strongloop.com">StrongLoop / IBM</a>.</p>
+Este documento puede estar desfasado respecto a la documentación en inglés. Para ver las últimas actualizaciones, consulte la <a href="/">documentación en inglés</a>.
+<p></p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+<h1 id="ejemplo-hello-world">Ejemplo Hello world</h1>
+<div class="doc-box doc-info">
+<p>Esta es básicamente la aplicación Express más sencilla que puede crear. Es una aplicación de archivo simple — <em>no</em> lo que obtendrá si utiliza el <a href="/es/starter/generator.html">generador de Express</a>, que crea el andamiaje para una aplicación completa con varios archivos JavaScript, plantillas Jade y subdirectorios para distintos propósitos.</p>
+</div>
+<p>En primer lugar, cree un directorio denominado <code>myapp</code>, cámbielo y ejecute <code>npm init</code>. A continuación, instale <code>express</code> como una dependencia, según se describe en la <a href="/es/starter/installing.html">guía de instalación</a>.</p>
+<p>En el directorio <code>myapp</code>, cree un archivo denominado <code>app.js</code> y añada el código siguiente:</p>
+<pre><code class="language-javascript" translate="no">
+const express = require('express')
+const app = express()
+const port = 3000
+
+app.get('/', (req, res) =&gt; {
+  res.send('Hello World!')
+})
+
+app.listen(port, () =&gt; {
+  console.log(`Example app listening on port ${port}`)
+})
+</code>
+</pre>
+<p>La aplicación inicia un servidor y escucha las conexiones en el puerto 3000. La aplicación responde con “Hello World!” para las solicitudes al URL raíz (<code>/</code>) o a la <em>ruta</em> raíz. Para cada vía de acceso diferente, responderá con un error <strong>404 Not Found</strong>.</p>
+<div class="doc-box doc-notice">
+<p><code>req</code> (solicitud) y <code>res</code> (respuesta) son exactamente los mismos objetos que proporciona Node, por lo que puede invocar <code>req.pipe()</code>, <code>req.on('data', callback)</code> y cualquier otro objeto que invocaría sin estar Express implicado.</p>
+</div>
+<p>Ejecute la aplicación con el siguiente mandato:</p>
+<pre><code class="language-console">$ node app.js
+</code></pre>
+<p>A continuación, cargue <a href="http://localhost:3000/">http://localhost:3000/</a> en un navegador para ver la salida.</p>
+</div>
+</section>
+<a id="top" href="#"><img src="/images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<iframe src="//ghbtns.com/github-btn.html?user=expressjs&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a> es un proyecto de la <a href="https://openjsf.org">Fundación OpenJS</a>.</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">Bifurque el sitio web en GitHub</a>.</div>
+<div>Copyright © StrongLoop, Inc. y otros colaboradores de expressjs.com.</div>
+</div>
+<div id="license">
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/us/"><img alt="Licencia Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png"></a> Esta obra está bajo una <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/us/">Licencia Creative Commons Atribución-CompartirIgual 3.0 Estados Unidos de América</a>.
+</div>
+</footer>
+<script type="039f4bda849230b8d6c5746b-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:es'] }
+})" async=""></script>
+<script src="/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="039f4bda849230b8d6c5746b-|49" defer=""></script>
+
+</body></html>
