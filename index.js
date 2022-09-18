@@ -19,54 +19,36 @@ app.get('/page', async (req, res) => {
     var name = url.replace(/[^a-zA-Z0-9 ]/g, '');
     console.log(`Getting the url: ${url}`);
 
-    fs.readFile(folder + name + '.html', async function(err, page) {
+    fs.readFile(folder + name + '.html', async function (err, page) {
         if (err) {
             try {
                 // Cargo la web, pillo el html
                 const { data } = await axios.get(url);
                 var $ = cheerio.load(data);
 
-                // TODO
-                // Before save the HTML, process the code in order to delete all and
-                // get just the h1, h2... p... pre... etc
+                var html = processHTML($);
 
-                // TODO -> meter esto en un archivo fuera y en una funcion que lo formatee
-                // usar .html() o .tex()
-                var html = `<html><head>
-                    <style>
-                    body * {font-family: Helvetica, Arial;}
-                    body {text-align: justify;}
-                    body svg {display: none;}
-                    div#content_main { width: 1000px; margin: 0 auto;}
-                    </style>
-                    <head>
-                    <body>
-                    <div id="content_main">
-                    ${$('body').html()} 
-                    </div>
-                    </body></html>`;
-    
                 // Guardo el html en un fichero
                 fs.writeFile(folder + '/' + name + '.html', html, function (err) {
-                if (err) throw err;
+                    if (err) throw err;
                     console.log('Url not found, saving in cache...');
                 });
-            } catch (error){
+            } catch (error) {
                 console.log(error);
             }
-    
+
             // Get the time at the end 
             var end = new Date().getTime();
-            console.log(`Request served in ${end - start}ms`);
+            console.log(`Request served in ${end - start} ms`);
             res.send(html);
-        }else{
+        } else {
             console.log("Found! Serving file from cache...");
-            res.writeHead(200, {'Content-Type': 'text/html'});
+            res.writeHead(200, { 'Content-Type': 'text/html' });
             res.write(page);
 
             // Get the time at the end 
             var end = new Date().getTime();
-            console.log(`Request served in ${end - start}ms`);
+            console.log(`Request served in ${end - start} ms`);
 
             return res.end();
 
@@ -74,6 +56,60 @@ app.get('/page', async (req, res) => {
     });
 })
 
-app.listen( port, () => {
-    console.log(`App on port ${port}`);
+app.listen(port, () => {
+    console.log(`App on port ${port} `);
 })
+
+/**
+ * Function that iterates all elements in body and create a 
+ * new processed HTML only with a list of accepted elements
+ * 
+ * @param {HTML} $ 
+ */
+function processHTML($) {
+    var _html = "";
+
+    var acceptedElements = [
+        'h1',
+        'h2',
+        'img',
+        'p'
+    ];
+
+    var children = $("body").find("*");
+    children.each((i, elem) => {
+        // console.log(elem.name);
+        var indexEl = acceptedElements.indexOf(elem.name);
+
+        if (indexEl > -1) {
+            var e = acceptedElements[indexEl];
+            if (elem.name == 'img') {
+                _html += $(elem);
+            } else {
+                _html += `<${e}> ${$(elem).html()} </${e}>`;
+            }
+        }
+    });
+    var processed_html = `<html> <head>
+                    <style>
+                    body * {font-family: Helvetica, Arial;}
+                    body {text-align: justify;}
+                    body svg {display: none;}
+                    body input {display: none;}
+                    body button {display: none;}
+                    body p {margin: 50px 0;}
+                    div#content_main {width: 1000px; margin: 0 auto;}
+                    @media screen and (max-width: 1000px){
+                        div#content_main {width: 90%; margin: 0 auto;}
+                    }
+                    @media
+                    </style>
+                                <head>
+                                    <body>
+                                        <div id="content_main">
+                                            ${_html}
+                                        </div>
+                                    </body></html>`;
+
+    return processed_html;
+}
