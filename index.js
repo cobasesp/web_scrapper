@@ -6,7 +6,7 @@ const app = express();
 const axios = require("axios");
 
 // Needed variables
-const port = 80;
+const port = process.env.PORT || 80;
 const folder = __dirname + '/pages/';
 
 app.get('/', (req, res) => {
